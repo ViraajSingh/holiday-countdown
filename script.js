@@ -1,14 +1,29 @@
 let targetDate;
 let days, hours, minutes, seconds;
+let party;
+
+document.addEventListener("DOMContentLoaded", () => {
+    party = document.getElementById("help").value; // Define the party variable
+});
+
 function trigger(){
     targetDate = new Date(document.getElementById("date").value); 
     console.log(targetDate)   
     updateCountdown()
     creation("div", document.getElementById("box-container"), {id: "one"})
-    creation("p", document.getElementById("one"), {}, hours)//add a strign literal to this 
+    creation("h2", document.getElementById("one"), {}, `Event: ${party}`)
+    creation("p", document.getElementById("one"), {}, `Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}`)//add a strign literal to this
+
+
+    // creation("div", document.getElementById("box-container"), {id: "two"})
+    // creation("h2", document.getElementById("two"), {}, `Event: ${party}`)
+    // creation("p", document.getElementById("two"), {}, `Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}`)//add a strign literal to this  
  
 
-}
+}   
+// document.getElementById("triggerButton").addEventListener("click", () => {
+//     trigger();
+// });
 
 const creation = (tag, parent, attributes = {}, content = "") => {
     const element = document.createElement(tag); 
