@@ -1,64 +1,44 @@
-let targetDate;
-let days, hours, minutes, seconds;
-let party;
 
-document.addEventListener("DOMContentLoaded", () => {
-    party = document.getElementById("help").value; // Define the party variable
-});
+    let targetDate;
+    let days, hours, minutes, seconds;
+    let party;
+    let end;
+    let timers = [];
 
-function trigger(){
-    targetDate = new Date(document.getElementById("date").value); 
-    console.log(targetDate)   
-    updateCountdown()
-    creation("div", document.getElementById("box-container"), {id: "one"})
-    creation("h2", document.getElementById("one"), {}, `Event: ${party}`)
-    creation("p", document.getElementById("one"), {}, `Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}`)//add a strign literal to this
+    function trigger() {
+        const name = document.getElementById("party").value;
+        if (!name) {
+            alert("Put in a valid Name");
+            return;
+        }
 
+        let targetDate = new Date(document.getElementById("date").value);
+        if (document.getElementById('date').value === "") {
+            alert("Put a valid time please");
+            return;
+        }
 
-    // creation("div", document.getElementById("box-container"), {id: "two"})
-    // creation("h2", document.getElementById("two"), {}, `Event: ${party}`)
-    // creation("p", document.getElementById("two"), {}, `Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}`)//add a strign literal to this  
- 
+        const timerElement = document.createElement('div');
+        document.getElementById("timer-container").appendChild(timerElement);
 
-}   
-// document.getElementById("triggerButton").addEventListener("click", () => {
-//     trigger();
-// });
-
-const creation = (tag, parent, attributes = {}, content = "") => {
-    const element = document.createElement(tag); 
-    Object.keys(attributes).forEach(key => element.setAttribute(key, attributes[key]));
-    element.innerHTML = content;
-    parent.appendChild(element);
-    return element;
-}
-
-function updateCountdown(){
-
-    const now = new Date(); // Current Date 
-    const timeDifference = targetDate - now; // Difference IN MILLISECONDS between current and target date 
-    if(timeDifference <= 0){
-        document.getElementById("time").innerHTML = "THE TIME SHALL COME";
-        clearInterval(end); // Stop the timer when the target date is reached 
-        return;
-    }
-    if (timeDifference === 0) {
-        alert(`Your "${party}" is done` )
+        const newT = {
+            name: name,
+            targetDate: document.getElementById("date").value,
+            timerElement: timerElement,
+            interval: setInterval(() => updateCountdown(newT), 1000)
+        };
+        timers.push(newT);
+        updateCountdown(newT);
     }
 
-    // Calculate the remaining time components 
-     days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-     hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-     minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-     seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    function updateCountdown(current) {
+        const now = new Date();
+        const timeDifference = new Date(current.targetDate) - now;
 
-    document.getElementById("time").innerText = `Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}`;
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-
-}
-
-const end = setInterval(updateCountdown,1000)
-
-updateCountdown()
-
-
+        current.timerElement.innerHTML = `<div class='event-data'><h2 id='title'>${current.name}</h2><p id='content'>Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}</p></div>`;
+    }

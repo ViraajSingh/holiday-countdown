@@ -4,27 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href = "style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Holdiay Countdown</h1>
+    <h1>Holiday Countdown</h1>
     <main>
         <div class="container">
-                <label for="event">Your Event:</label>
-                <input type="text" id="party" name="event" required>
-                <p id="help"></p>
-                <br>
-                <label for="date">Date:</label>
-                <input type="datetime-local" id="date" name="date" required>
-                <br>
-                <button type="button" onclick = "trigger()">Start Countdown</button>
-    </div>
-    <div id="time" class="none">
-
-    </div>
+            <label for="event">Your Event:</label>
+            <input type="text" id="party" name="event" required>
+            <p id="help"></p>
+            <br>
+            <label for="date">Date:</label>
+            <input type="datetime-local" id="date" name="date" required>
+            <br>
+            <button type="button" onclick="trigger()">Start Countdown</button>
+        </div>
+        <div id="time" class="none"></div>
+        <div id="timer-container"></div>
     </main>
-    <div id="box-container">
-    </div>
+    <div id="box-container"></div>
 </body>
 <script src="./script.js"></script>
 </html>

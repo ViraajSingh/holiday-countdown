@@ -15,3 +15,21 @@
 .none{
     display: none;
 }
+
+.event-data{
+    margin: auto;
+    margin-bottom: 100px;
+    background-color: navy;
+    color: white;
+    width: fit-content;
+    padding: 10px;
+
+}
+
+body{
+    background-color: #333;
+}
+
+h2{
+    text-align: center;
+}
