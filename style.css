@@ -1,11 +1,14 @@
 .container{
     display: flex;
     margin: auto;
-    background-color: blueviolet;
+    background-color: rgb(226, 43, 43);
     width: 40rem;
     height: 40rem;
     justify-content: center;
     align-items: center;
+    border: 5px solid darkred;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
 }
 
 .box{
@@ -19,17 +22,81 @@
 .event-data{
     margin: auto;
     margin-bottom: 100px;
-    background-color: navy;
-    color: white;
+    background-color: gold;
+
     width: fit-content;
     padding: 10px;
+    color: black;
+}
 
+.event-data:hover{
+    box-shadow: 10px 10px 20px rgba(0.5, 0.5, 0.5, 0.5);
 }
 
 body{
-    background-color: #333;
+    background-color: rgb(156, 248, 156);
 }
 
 h2{
     text-align: center;
+}
+
+#party{
+    color: red;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+#date{
+    color: rgb(70, 68, 203);
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+#button{
+    background-color: gold;
+    border: 2px solid darkorange;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+
+}
+
+#button:hover{
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.title{
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: darkblue;
+    text-shadow: 3px 3px 5px lightgray;
+    text-align: center;
+}
+
+@media (max-width: 652px) {
+    .container {
+        width: 50%;
+        height: 50%;
+        flex-direction: column;
+    }
+
+    .event-data {
+        margin-bottom: 5px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    #button {
+        width: 50%;
+        padding: 5px;
+        font-size: 12px;
+    }
 }
